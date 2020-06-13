@@ -1,6 +1,5 @@
 #include <iostream>
 #include <math.h>
-
 #include <locale.h>
 #include <stdio.h>
 
@@ -10,19 +9,18 @@ int main()
 {
     setlocale(LC_ALL, "Portuguese");
 
-    int menu;
+    int menu, a=0,b=0,c=0,d=0;
     float car0 ; //Variaveis
 
 
 
-
+    do{
+    cout <<"\n";
     cout << "CALCULO DO PRECO DE UM AUTOMOVEL 0 KM  " <<"\n";
     cout << "======================================="<<"\n";
     cout <<"\n";
 
-    cout <<"Digite o Preco de Fabrica do Automovel!" <<"\n";
-    cout <<"\n";
-    cin >>car0 ;
+
 
     cout << "Escolha uma das opcoes abaixo "<<"\n";
     cout << "1- Trio eletrico (alarme, vidro eletrico e tranca eletrica)"<<"\n";
@@ -31,8 +29,15 @@ int main()
     cout << "4- Completo (trio elétrico, ar condicionado e direção hidráulica)"<<"\n";
     cout << "0- PARA SAIR!"<<"\n";
 
-
     cin >> menu;
+
+    if(menu !=0){
+    cout <<"\n";
+    cout <<"Digite o Preco de Fabrica do Automovel!" <<"\n";
+    cout <<"\n";
+    cin >>car0 ;
+    cout <<"\n";
+     }
 
     float ipi=(0.08*car0);
     float completo= ((0.06*car0)+ipi+car0);
@@ -40,42 +45,47 @@ int main()
     switch (menu)
     {
         case 0:
-            cout << "Volte Sempre!"<<"\n";
+            cout << "Trio eletrico escolhido  " <<a <<" veze(s)!" <<endl;
+            cout << "Ar condicionado escolhido  " <<b <<" veze(s)!" <<endl;
+            cout << "Direçao hidraulica escolhido  " <<c <<" veze(s)!" <<endl;
+            cout << "Completo escolhido  " <<d <<" veze(s)!" <<endl;
+
+            cout <<"\n"<< "Volte Sempre!"<<"\n";
             break;
 
         case 1:
             //- trio elétrico : 2% do valor de fábrica com IPI.
-            printf("%0.2f",((0.02*car0)+car0)+ipi);
+            cout <<"0 KM Trio eletrico sai por R$ " <<((0.02*car0)+car0)+ipi<<endl;
+            a++;
             break;
 
         case 2:
             //- ar condicionado: 2% do valor de fábrica do modelo (sem o IPI).
-            printf( "%0.2f",(0.02*car0)+car0 );
+            cout <<"0 KM com Ar condicionado sai por R$ " << (0.02*car0)+car0 <<endl;
+            b++;
             break;
 
         case 3:
             //direção hidráulica: 2% do valor de fábrica do modelo (sem o IPI).
-            cout << "Direcao hidraulica"<<"\n";
-            printf( "%0.2f",(0.02*car0)+car0 );
+            cout << "0 KM com Direcao hidraulica sai por R$ "<<(0.02*car0)+car0 <<endl;
+
+            c++;
             break;
 
         case 4:
             //a soma dos acréscimos isolados com ipi (menos 3.5% do valor)
-            printf("%0.2f",completo-((3.5*completo)/100));
-            cout << "Completo"<<"\n";
+            cout << "0 KM Completo sai por R$ " <<completo-((3.5*completo)/100)<<endl;
+
+            d++;
             break;
 
         default:
-            cout << "lets go ! Voce vai conseguir"<<"\n";
+            cout << "COMANDO INVALIDO!"<<"\n";
             break;
 
+        }
 
-
-    }
-
-
-
-
+    }while(menu!=0);
 
 
     return 0;
